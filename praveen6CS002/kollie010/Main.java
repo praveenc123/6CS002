@@ -30,11 +30,8 @@ public class Main {
   PictureFrame pf = new PictureFrame();
 
   private void printgenerateDominoes() {
-	  int count=0;
-	  if (count != 28) {
 	        System.out.println("something went wrong generating dominoes");
 	        System.exit(0);
-	      }
 	    }
   
   private void generateDominoes() {
@@ -53,7 +50,9 @@ public class Main {
         }
       }
     }
+    if (count != 28) {
     printgenerateDominoes();
+    }
   }
 
   private void generateGuesses() {
@@ -66,7 +65,9 @@ public class Main {
         count++;
       }
     }
-    printgenerateDominoes();
+    if (count != 28) {
+        printgenerateDominoes();
+        }
   }
 
   void collateGrid() {
@@ -154,7 +155,9 @@ public class Main {
         y++;
       }
     }
-    printgenerateDominoes();
+    if (count != 28) {
+        printgenerateDominoes();
+        }
   }
 
   private void rotateDominoes() {
