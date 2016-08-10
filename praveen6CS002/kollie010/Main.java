@@ -276,6 +276,11 @@ public class Main {
       System.out.println(d);
     }
   }
+  private void switchmethod(){
+  		generateDominoes();
+      	shuffleDominoesOrder();
+      	placeDominoes();
+  }
 
   public final int ZERO = 0;
 
@@ -356,26 +361,21 @@ public class Main {
             c2 = -7;
           }
         }
+        
         switch (c2) {
         case 1:
-          generateDominoes();
-          shuffleDominoesOrder();
-          placeDominoes();
-          collateGrid();
+        	switchmethod();
+        	collateGrid();
           // printGrid();
           break;
         case 2:
-          generateDominoes();
-          shuffleDominoesOrder();
-          placeDominoes();
+          switchmethod();
           rotateDominoes();
           collateGrid();
           // printGrid();
           break;
         default:
-          generateDominoes();
-          shuffleDominoesOrder();
-          placeDominoes();
+          switchmethod();
           rotateDominoes();
           rotateDominoes();
           rotateDominoes();
