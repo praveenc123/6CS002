@@ -18,7 +18,7 @@ import javax.swing.JScrollPane;
 public class Main {
 
   private String playerName;
-  public List<Domino> _d;
+  public List<Domino> ListofDomino;
   public List<Domino> _g;
   public int[][] grid = new int[7][8];
   public int[][] gg = new int[7][8];
@@ -38,14 +38,14 @@ public class Main {
 	    }
   
   private void generateDominoes() {
-    _d = new LinkedList<Domino>();
+	ListofDomino = new LinkedList<Domino>();
     int count = 0;
     int x = 0;
     int y = 0;
     for (int l = 0; l <= 6; l++) {
       for (int h = l; h <= 6; h++) {
         Domino d = new Domino(h, l);
-        _d.add(d);
+        ListofDomino.add(d);
         d.place(x, y, x + 1, y);
         count++;
         x += 2;
@@ -74,7 +74,7 @@ public class Main {
   }
 
   void collateGrid() {
-    for (Domino d : _d) {
+    for (Domino d : ListofDomino) {
       if (!d.placed) {
         grid[d.hy][d.hx] = 9;
         grid[d.ly][d.lx] = 9;
@@ -130,17 +130,17 @@ public class Main {
   private void shuffleDominoesOrder() {
     List<Domino> shuffled = new LinkedList<Domino>();
 
-    while (_d.size() > 0) {
-      int n = (int) (Math.random() * _d.size());
-      shuffled.add(_d.get(n));
-      _d.remove(n);
+    while (ListofDomino.size() > 0) {
+      int n = (int) (Math.random() * ListofDomino.size());
+      shuffled.add(ListofDomino.get(n));
+      ListofDomino.remove(n);
     }
 
-    _d = shuffled;
+    ListofDomino = shuffled;
   }
 
   private void invertSomeDominoes() {
-    for (Domino d : _d) {
+    for (Domino d : ListofDomino) {
       if (Math.random() > 0.5) {
         d.invert();
       }
@@ -151,7 +151,7 @@ public class Main {
     int x = 0;
     int y = 0;
     int count = 0;
-    for (Domino d : _d) {
+    for (Domino d : ListofDomino) {
       count++;
       d.place(x, y, x + 1, y);
       x += 2;
@@ -230,7 +230,7 @@ public class Main {
   }
 
   private Domino findDominoAt(int x, int y) {
-    for (Domino d : _d) {
+    for (Domino d : ListofDomino) {
       if ((d.lx == x && d.ly == y) || (d.hx == x && d.hy == y)) {
         return d;
       }
@@ -257,7 +257,7 @@ public class Main {
   }
 
   private Domino findDominoByLH(int x, int y) {
-    for (Domino d : _d) {
+    for (Domino d : ListofDomino) {
       if ((d.low == x && d.high == y) || (d.high == x && d.low == y)) {
         return d;
       }
@@ -266,7 +266,7 @@ public class Main {
   }
 
   private void printDominoes() {
-    for (Domino d : _d) {
+    for (Domino d : ListofDomino) {
       System.out.println(d);
     }
   }
@@ -334,7 +334,7 @@ public class Main {
         System.out.println();
         break;      
       case 0: {
-        if (_d == null) {
+        if (ListofDomino == null) {
           System.out.println("It is a shame that you did not want to play");
         } else {
           System.out.println("Thankyou for playing");
@@ -746,7 +746,7 @@ public class Main {
         recordTheScore();
         System.out.println("Here is the solution:");
         System.out.println();
-        Collections.sort(_d);
+        Collections.sort(ListofDomino);
         printDominoes();
         System.out.println("you scored " + score);
 
@@ -860,7 +860,7 @@ public class Main {
   }
 
   public void drawDominoes(Graphics g) {
-    for (Domino d : _d) {
+    for (Domino d : ListofDomino) {
       pf.dp.drawDomino(g, d);
     }
   }
