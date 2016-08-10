@@ -24,7 +24,7 @@ public class Main {
   public int[][] gg = new int[7][8];
   int mode = -1;
   int cf;
-  int score;
+  int score, bonus;
   long startTime;
 
   PictureFrame pf = new PictureFrame();
@@ -737,7 +737,7 @@ public class Main {
           e.printStackTrace();
         }
         int gap = (int) (now - startTime);
-        int bonus = 60000 - gap;
+        bonus = 60000 - gap;
         score += bonus > 0 ? bonus / 1000 : 0;
         recordTheScore();
         System.out.println("Here is the solution:");
