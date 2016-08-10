@@ -39,9 +39,7 @@ public class Main {
   
   private void generateDominoes() {
 	ListofDomino = new LinkedList<Domino>();
-    int count = 0;
-    int x = 0;
-    int y = 0;
+    int count = 0, x = 0, y = 0;
     for (int l = 0; l <= 6; l++) {
       for (int h = l; h <= 6; h++) {
         Domino d = new Domino(h, l);
@@ -60,9 +58,7 @@ public class Main {
 
   private void generateGuesses() {
     _g = new LinkedList<Domino>();
-    int count = 0;
-    int x = 0;
-    int y = 0;
+    int count = 0, x = 0, y = 0;
     for (int l = 0; l <= 6; l++) {
       for (int h = l; h <= 6; h++) {
         Domino d = new Domino(h, l);
@@ -148,9 +144,7 @@ public class Main {
   }
 
   private void placeDominoes() {
-    int x = 0;
-    int y = 0;
-    int count = 0;
+    int x = 0, y = 0, count = 0;
     for (Domino d : ListofDomino) {
       count++;
       d.place(x, y, x + 1, y);
